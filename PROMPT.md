@@ -1,5 +1,7 @@
 # Build a mechanical typewriter page
 
+[Live preview: try the typewriter](index.html)
+
 Build a single-page typewriter that a web visitor can operate. Keys depress, one typebar strikes a fixed point, letters appear on the paper at the moment of the hit, the carriage steps, ink fades, and holding a spool rewinds a fresh ribbon.
 
 This is a drawn machine in HTML, CSS, and SVG. It is not a text box styled to look like a typewriter.
@@ -18,16 +20,16 @@ Design an original machine. Do not copy a brand name, logo, or model name onto t
 
 ## Scene
 
-Draw the machine as layers, centered on a flat warm desk (`#c4a574`). Scale the whole machine with `transform: scale()` on a narrow viewport so the key layout never reflows.
+Draw the machine as layers, centered on a warm plaster desk (`#cfc6b8`). The form is a 1970s Olivetti portable: a low olive shell around a matte black keyboard deck. Do not print a brand name or logo on the body. Scale the whole machine with `transform: scale()` on a narrow viewport so the key layout never reflows.
 
 Parts, from back to front:
 
-- **Body.** Matte black rounded shell (`#1a1a1a`), about 920px wide, with a thin top highlight.
-- **Paper mask.** A window above the platen showing about 8 lines. Older lines scroll up and out of the mask. The sheet is off-white (`#f4efe4`) with a soft shadow.
+- **Body.** Olive green molded shell (`#55633f`), about 920px wide, with a short matte highlight and softly squared corners.
+- **Paper mask.** A window above the platen showing about 8 lines, set in a matte black throat with a thin paper scale along the top. Older lines scroll up and out of the mask. The sheet is aged parchment (`#e3d0a8`) with a soft shadow.
 - **Platen.** A black horizontal cylinder behind the strike point.
-- **Ribbon and spools.** Two spools, left and right. A dark ribbon runs between them across the strike point. Ribbon color tracks ink: full ink is `#1c1c1c`, empty ink matches the paper.
+- **Ribbon and spools.** Two spools, left and right. A dark ribbon runs between them across the strike point. Ribbon color tracks ink: full ink is `#1a1a1a`, empty ink matches the parchment.
 - **Type basket.** A fan of static bars for the silhouette, plus one striking bar that swings to the center strike point. Do not build a separate moving bar per key.
-- **Keyboard.** Circular cream keycaps (`#f3e6c8`), about 36px, with 6px gaps and dark legends (`#2a241c`). Rows, top to bottom:
+- **Keyboard.** Low square matte black keycaps (`#161616`), about 36px, with 6px gaps, small corner radii, and parchment legends (`#e7dcc4`). Rows, top to bottom:
   1. `1 2 3 4 5 6 7 8 9 0`
   2. `Q W E R T Y U I O P`
   3. `A S D F G H J K L`
@@ -101,7 +103,7 @@ Print only at the hit. Never show the glyph at keydown.
 
 `ink` starts at 1. Each printed character subtracts `INK_PER_STRIKE` and clamps at 0. About 50 strikes take the ribbon from full to empty.
 
-Glyph color is a mix from `#1c1c1c` at ink 1 toward `#f4efe4` at ink 0, using the ink value from the moment that glyph was printed. Store that value with the glyph (for example, parallel arrays or objects `{ ch, ink }`). Do not recolor old glyphs when the ribbon is refilled.
+Glyph color is a mix from `#1a1a1a` at ink 1 toward `#e3d0a8` at ink 0, using the ink value from the moment that glyph was printed. Store that value with the glyph (for example, parallel arrays or objects `{ ch, ink }`). Do not recolor old glyphs when the ribbon is refilled.
 
 The ribbon segment across the platen uses the current `ink` color.
 

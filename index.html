@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typewriter</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+</head>
+<body>
+  <p class="sr-only">Type to write on the paper. The keys fill the bottom of the screen. Hold a spool to rewind the ribbon when the ink runs light.</p>
+  <div class="machine" id="machine">
+    <section class="carriage-deck" aria-label="Paper carriage">
+      <div class="works">
+        <div class="scale" aria-hidden="true"></div>
+        <div class="paper-stage">
+          <div class="paper-mask" id="paper-mask">
+            <div class="carriage" id="carriage">
+              <div class="sheet" id="sheet"></div>
+              <div class="lines" id="lines"></div>
+            </div>
+            <div class="guide" aria-hidden="true"></div>
+          </div>
+          <button class="lever" id="lever" type="button" aria-label="Return lever">
+            <span class="lever-arm"></span>
+          </button>
+          <div class="bell" id="bell" data-state="idle" role="img" aria-label="Margin bell">
+            <svg viewBox="0 0 32 32" class="bell-svg" aria-hidden="true">
+              <path fill="currentColor" d="M16 3.2a1.8 1.8 0 0 1 1.8 1.8v1.1a8.2 8.2 0 0 1 6.4 8v5.4l1.8 2.1v1.6H6v-1.6l1.8-2.1v-5.4a8.2 8.2 0 0 1 6.4-8V5a1.8 1.8 0 0 1 1.8-1.8zm0 24.2a3.2 3.2 0 0 0 3.1-2.4h-6.2a3.2 3.2 0 0 0 3.1 2.4z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="platen" aria-hidden="true"></div>
+        <div class="ribbon-row">
+          <button class="spool" id="spool-left" type="button" aria-label="Rewind ribbon">
+            <span class="spool-rotor"></span>
+          </button>
+          <div class="ribbon" id="ribbon"></div>
+          <button class="spool" id="spool-right" type="button" aria-label="Rewind ribbon">
+            <span class="spool-rotor"></span>
+          </button>
+        </div>
+        <div class="basket" aria-hidden="true">
+          <div class="bar" style="--angle: -54deg"></div>
+          <div class="bar" style="--angle: -40deg"></div>
+          <div class="bar" style="--angle: -26deg"></div>
+          <div class="bar" style="--angle: -14deg"></div>
+          <div class="bar" style="--angle: 14deg"></div>
+          <div class="bar" style="--angle: 26deg"></div>
+          <div class="bar" style="--angle: 40deg"></div>
+          <div class="bar" style="--angle: 54deg"></div>
+          <div class="striker" id="striker"></div>
+        </div>
+        <p class="hint" id="hint">Hold a spool to rewind the ribbon.</p>
+      </div>
+    </section>
+    <section class="keyboard-deck" aria-label="Keyboard">
+      <div class="keyboard" id="keyboard"></div>
+    </section>
+  </div>
+  <script src="typewriter.js"></script>
+</body>
+</html>
